@@ -18,9 +18,12 @@ def check_and_install_models(force=False):
 
         # Download and install all available packages
         for available_package in available_packages:
-            print("Downloading %s (%s) ..." % (available_package, available_package.package_version))
-            download_path = available_package.download()
-            package.install_from_path(download_path)
-
+            if "English" in available_package and "Spanish" in available_package:
+                print("Downloading %s (%s) ..." % (available_package, available_package.package_version))
+                download_path = available_package.download()
+                package.install_from_path(download_path)
+            
+            
+            
         print("Loaded support for %s languages (%s models total)!" % (len(translate.load_installed_languages()), len(available_packages)))
 	
